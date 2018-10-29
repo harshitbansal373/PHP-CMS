@@ -1,3 +1,24 @@
+
+<?php include "includes/header.php" ?>
+
+<!-- Navbar -->
+<?php include "includes/navigation.php" ?>
+
+<div id="wrapper">
+
+<!-- Sidebar -->
+<?php include "includes/sidebar.php" ?>
+
+<div id="content-wrapper">
+
+  <div class="container-fluid">
+    <!-- Page Content -->
+    <h1>Welcome To Admin 
+     <small>Author</small>
+    </h1>
+    <hr>
+
+
 <table class="table table-hover table-dark table-bordered">
   <thead>
     <tr>
@@ -17,7 +38,7 @@
 
     <?php 
         
-        $query = "SELECT * FROM comments";
+        $query = "SELECT * FROM comments WHERE comment_post_id =" . mysqli_real_escape_string($connection, $_GET['id']). " ";
         $select_all_comments_query = mysqli_query($connection,$query);
         while($row = mysqli_fetch_assoc($select_all_comments_query)){
            $comment_id = $row['comment_id'];
@@ -47,7 +68,7 @@
           echo "<td>$comment_date</td>";
           echo "<td><a href='comments.php?approve=$comment_id'>Approve</td>";
           echo "<td><a href='comments.php?unapprove=$comment_id'>Unapprove</td>";
-          echo "<td><a href='comments.php?delete=$comment_id'>Delete</td>";
+          echo "<td><a href='post_comment.php?delete=$comment_id&id=". $_GET['id'] ."'>Delete</td>";
           echo "</tr>";
         }
     ?>
@@ -86,7 +107,19 @@ if(isset($_GET['delete'])){
 
     $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
     $delete_query = mysqli_query($connection,$query);
-    header("Location:comments.php");
+    header("Location:post_comment.php?id=". $_GET['id'] ."");
 
 }
 ?>
+
+
+  </div>
+  <!-- /.container-fluid -->
+
+</div>
+<!-- /.content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<?php include "includes/footer.php" ?>

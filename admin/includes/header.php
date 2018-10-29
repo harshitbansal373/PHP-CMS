@@ -5,8 +5,14 @@
 <?php session_start(); ?>
 
 <?php
-if(!isset($_SESSION['user_role'])){
+if(isset($_SESSION['user_role'])) {
+  
+  if($_SESSION['user_role'] !== 'admin') {
     header("location: ../index.php");
+  }
+
+}else{
+  header("Location: ../index.php");
 }
 
 ?>

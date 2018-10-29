@@ -7,7 +7,11 @@
   <i class="fas fa-bars"></i>
 </button>
 
-<ul class="navbar-nav ml-auto">
+<ul class="navbar-nav ml-auto">    
+  <li class="nav-item ">
+    <a class="nav-link" href="">Users Online: <?php echo users_online(); ?>
+    </a>
+  </li>       
   <li class="nav-item ">
     <a class="nav-link" href="../index.php">Home
     </a>

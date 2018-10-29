@@ -26,6 +26,8 @@ if(isset($_POST['update_user'])){
     $username = $_POST['username'];
     $user_email = $_POST['user_email'];
     $user_password = $_POST['user_password'];
+
+    $user_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12)); 
  
     $query = "UPDATE users SET user_firstname = '{$user_firstname}', user_lastname = '{$user_lastname}', 
     user_role = '{$user_role}', username = '{$username}', user_email = '{$user_email}', 
@@ -98,7 +100,7 @@ if(isset($_POST['update_user'])){
         </div> -->
         <div class="form-group">
             <label for="user_password">Password</label>
-            <input type="password" value="<?php echo $user_password; ?>"class="form-control" name="user_password" >
+            <input type="password" autocomplete="off" class="form-control" name="user_password" >
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary " name="update_user" value="Update Profile" >
