@@ -26,7 +26,11 @@
             <li class="nav-item ">
               <a class="nav-link" href="registration.php">Registration
               </a>
-            </li>            
+            </li> 
+            <li class="nav-item ">
+              <a class="nav-link" href="contact.php">Contact
+              </a>
+            </li>           
             
             
             
