@@ -18,7 +18,7 @@
         
         <?php 
 
-            $per_page =3;
+            $per_page =4;
 
             if(isset($_GET['page'])){
               $page = $_GET['page'];
@@ -58,7 +58,6 @@
           </h1>
                   
           <!--first Blog Post -->
-          <h1><?php echo $count; ?></h1>
           <h2> 
             <a href="post.php?p_id='<?php echo $post_id; ?>'"><?php echo $post_title; ?></a>
           </h2>

@@ -58,7 +58,7 @@ $password = $_POST['password'];
     
     <section id="login">
         <div class="container">
-            <div class="row  justify-content-center align-items-center">
+            <div class="row justify-content-center align-items-center">
                 <div class="col-sm-5 col-sm-offset-5">
                     <div class="form-wrap">
 					<h3 class="text-center mt-3 mb-3"><i class="fas fa-portrait fa-3x"></i></h3>
