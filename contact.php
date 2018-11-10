@@ -35,7 +35,7 @@ $header = $_POST['email'];
             <div class="row  justify-content-center align-items-center">
                 <div class="col-sm-5 col-sm-offset-5">
                     <div class="form-wrap">
-                    <h1 class="text-center">Contact</h1>
+					<h3 class="text-center"><i class="fas fa-envelope fa-3x"></i></h3>
                         <form role="form" action="contact.php" method="post" id="login-form" autocomplete="off">
                             <h6><?php echo $msg; ?></h6>
                              <div class="form-group">

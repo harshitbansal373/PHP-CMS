@@ -61,7 +61,7 @@ $password = $_POST['password'];
             <div class="row  justify-content-center align-items-center">
                 <div class="col-sm-5 col-sm-offset-5">
                     <div class="form-wrap">
-                    <h1 class="text-center">Register</h1>
+					<h3 class="text-center mt-3 mb-3"><i class="fas fa-portrait fa-3x"></i></h3>
                         <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
                             <h6><?php echo $message; ?></h6>
                             <div class="form-group">
