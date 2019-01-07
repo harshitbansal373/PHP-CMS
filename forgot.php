@@ -22,7 +22,7 @@
             mysqli_stmt_close($stmt);
 
         }else{
-            echo "email does not";
+            echo "email does not exists";
         }
     }
 
