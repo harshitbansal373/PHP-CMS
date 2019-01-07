@@ -1,5 +1,32 @@
 <?php  include "includes/db.php"; ?>
 <?php  include "includes/header.php"; ?>
+<?php  include "admin/functions.php"; ?>
+
+
+<?php
+    
+    if(empty($_GET['forgot'])){
+        redirect('index.php');
+    }
+
+    if(isset($_POST['email'])){
+        $email = $_POST['email'];
+        $length = 50;
+        $token = bin2hex(openssl_random_pseudo_bytes($length));
+
+        if(email_exists($email)){
+            
+           $stmt = mysqli_prepare($connection,"UPDATE users SET token='{$token}' WHERE user_email= ?");
+            mysqli_stmt_bind_param($stmt, "s", $email);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+            
+        }else{
+            echo "does not";
+        }
+    }
+
+?>
 
 <!-- Page Content -->
 <div class="container">
@@ -19,7 +46,7 @@
  				    				<span class="input-group-text"><i class="far fa-envelope"></i></span>
 				    			</div>
     	                        	<label for="email" class="sr-only">email</label>
-                                    <input type="email" id="email" name="email" placeholder="email address" class="form-control">									
+                                    <input type="email" id="email" name="email" placeholder="email address" class="form-control" required>									
 				    		</div>
                             <div class="form-group">
                             <input type="submit" name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password">                            
