@@ -33,7 +33,7 @@ $header = $_POST['email'];
     <section id="login">
         <div class="container">
             <div class="row  justify-content-center align-items-center">
-                <div class="col-sm-5 col-sm-offset-5">
+                <div class="col-sm-5 col-sm-offset-5 border border-dark mt-4">
                     <div class="form-wrap">
 					<h3 class="text-center"><i class="fas fa-envelope fa-3x"></i></h3>
                         <form role="form" action="contact.php" method="post" id="login-form" autocomplete="off">
@@ -47,10 +47,10 @@ $header = $_POST['email'];
                                 <input type="text" name="subject" id="subject" class="form-control" placeholder="Enter Your subject">
                             </div>
                              <div class="form-group">
-                                <textarea class="form-control" name="body" id="body" cols="50" rows="6"></textarea>
+                                <textarea class="form-control" name="body" id="body" cols="50" rows="6" placeholder="Type Your Message..."></textarea>
                             </div>
 
-                            <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Submit">
+                            <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block mb-3" value="Submit">
                         </form>
 
                     </div>
