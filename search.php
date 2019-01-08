@@ -35,6 +35,7 @@
           }
           else{
             while($row = mysqli_fetch_assoc($search_query)){
+               $post_id = $row['post_id'];
                $post_title = $row['post_title'];
                $post_author = $row['post_author'];
                $post_user = $row['post_user'];
@@ -61,7 +62,7 @@
            </a>
            <hr>  
            <p><?php echo $post_content; ?></p>
-               <a href="post.php?p_id='<?php echo $post_id; ?>'" class="btn btn-primary">Read More &rarr;</a>
+           <a href="post.php?p_id='<?php echo $post_id; ?>'" class="btn btn-primary">Read More &rarr;</a>
            <hr>        
  
  

@@ -1,5 +1,21 @@
 <?php
 
+function currentUser(){
+    if(isset($_SESSION['username'])){
+        return $_SESSION['username'];
+    }
+    return false;
+}
+
+function imagePlaceholder($image=''){
+    if(!$image){
+        return '544106281_1280x720.jpg';
+    }
+    else{
+        return $image;
+    }
+}
+
 function users_online() {
 
     global $connection;

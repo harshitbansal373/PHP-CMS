@@ -11,6 +11,48 @@
         redirect('index.php');
     }
 
+    // $email = 'harshitbansal373@gmail.com';
+    // $token = '77020c98efbc545715012c76bec5aaec6e8a2cfced12d25f1c2f2626a1ef4af2271b1e458848d80a745e6b578b954cf34427';
+
+    if($stmt = mysqli_prepare($connection, 'SELECT  username,user_email, token FROM users WHERE token=?')){
+        mysqli_stmt_bind_param($stmt, "s",$_GET['token']);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt,$username,$user_email,$token);
+        mysqli_stmt_fetch($stmt);
+        mysqli_stmt_close($stmt);
+
+
+
+        // if($_GET['token']!==$token || $_GET['email']!==$email){
+        //     redirect('index.php');
+        // }
+
+        if(isset($_POST['password']) && isset($_POST['confirmpassword'])){
+            
+            if($_POST['password']==$_POST['confirmpassword']){
+
+                $password = $_POST['password'];
+                $hashedpassword = password_hash($password, PASSWORD_BCRYPT, array('cost'=>12));
+                if($stmt = mysqli_prepare($connection, "UPDATE users SET token='',user_password='{$hashedpassword}' WHERE user_email=?")){
+
+                    mysqli_stmt_bind_param($stmt,"s",$_GET['email']);
+                    mysqli_stmt_execute($stmt);
+
+                    if(mysqli_stmt_affected_rows($stmt) >= 1){
+                        redirect('login.php');
+                    }
+
+                    mysqli_stmt_close($stmt);
+
+                }
+
+
+            }else{
+                echo "different";
+            }
+        }
+    }
+
 ?>
 
 <!-- Page Content -->
