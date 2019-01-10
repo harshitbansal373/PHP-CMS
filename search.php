@@ -30,6 +30,7 @@
           }
       
           $count = mysqli_num_rows($search_query);
+          
           if($count == 0){
             echo "<h1 class='text-center'>NO RESULT</h1>";
           }
@@ -67,7 +68,7 @@
  
  
            <?php } 
-          }
+              }
       
         }?>
 

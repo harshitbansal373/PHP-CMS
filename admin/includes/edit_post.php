@@ -44,21 +44,22 @@ if(isset($_POST['update_post'])){
 
     $query = "UPDATE posts SET post_title = '{$post_title}', post_category_id = '{$post_category_id}', 
     post_author = '{$post_author}', post_status = '{$post_status}', post_image = '{$post_image}', 
-    post_tags = '{$post_tags}', post_content = '{$post_content}', post_date = NOW() WHERE post_id = {$the_post_id} ";
+    post_tags = '{$post_tags}', post_content = '{$post_content}', post_date = NOW() WHERE post_id = ?";
 
-    $update_post = mysqli_query($connection,$query);
+    $stmt_update_post = mysqli_prepare($connection,$query);
+    mysqli_stmt_bind_param($stmt_update_post, "s", $the_post_id);
+    mysqli_stmt_execute($stmt_update_post);
+    mysqli_stmt_close($stmt_update_post);
 
-    confirm_query($update_post);
+    confirm_query($stmt_update_post);
     header("Location:posts.php");
-
-
 
 }
 
 
-
-
 ?>
+
+
 <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="post_title">Post title</label>
@@ -106,11 +107,6 @@ if(isset($_POST['update_post'])){
             </select>
         </div>
 
-
-        <!-- <div class="form-group">
-            <label for="post_status">Post Status</label>
-            <input type="text" class="form-control" value="<?php echo $post_status; ?>" name="post_status" >
-        </div> -->
         <div class="form-group">
             <label for="post_image">Post Image</label><br>
            <?php echo "<img width='100' class='img-fluid' src='../images/$post_image' alt='img'>";  ?> <br>

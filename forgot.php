@@ -27,7 +27,7 @@
                 $message = '<p>Please click to reset Your Password
                             <a href="http://localhost/blog/reset.php?email='.$email.'&token='.$token.' ">
                                     http://localhost/blog/reset.php?email='.$email.'&token='.$token.'</a>
-                        </p>';
+                            </p>';
 
                 if(mail($email,$subject,$message)){
                     $emailsent = true;

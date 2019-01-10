@@ -35,27 +35,6 @@
           echo "<td>$user_lastname</td>";
           echo "<td>$user_email</td>";
           echo "<td>$user_role</td>";
-
-        //   $query = "SELECT * FROM categories WHERE cat_id = {$post_category_id}";
-        //   $select_categories_id = mysqli_query($connection,$query);
-      
-        //   while($row = mysqli_fetch_assoc($select_categories_id)){
-        //   $cat_id = $row['cat_id'];
-        //   $cat_title = $row['cat_title'];
-        //   echo "<td>$cat_title</td>";
-        //   }
-  
-  
-
-        //   $query = "SELECT * FROM posts WHERE post_id = $comment_post_id";
-        //   $select_post_id_query = mysqli_query($connection,$query);
-        //   while($row = mysqli_fetch_assoc($select_post_id_query)){
-        //       $post_id = $row['post_id'];
-        //       $post_title = $row['post_title'];
-        //       echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a></td>";
-
-        //   }
-
           echo "<td><a href='users.php?admin=$user_id'>Admin</td>";
           echo "<td><a href='users.php?subscriber=$user_id'>Subscriber</td>";
           echo "<td><a href='users.php?source=edit_user&u_id=$user_id'>Edit</td>";
@@ -75,8 +54,13 @@
 if(isset($_GET['admin'])){
     $the_user_id = $_GET['admin'];
 
-    $query = "UPDATE users SET user_role = 'admin' WHERE user_id = $the_user_id";
-    $admin_query = mysqli_query($connection,$query);
+    // $query = "UPDATE users SET user_role = 'admin' WHERE user_id = $the_user_id";
+    // $admin_query = mysqli_query($connection,$query);
+    $query = "UPDATE users SET user_role = 'admin' WHERE user_id = ?";
+    $stmt_admin_query = mysqli_prepare($connection,$query);
+    mysqli_stmt_bind_param($stmt_admin_query, "s", $the_user_id);
+    mysqli_stmt_execute($stmt_admin_query);
+    mysqli_stmt_close($stmt_admin_query);
     header("Location:users.php");
 
 }
@@ -86,8 +70,13 @@ if(isset($_GET['admin'])){
 if(isset($_GET['subscriber'])){
     $the_user_id = $_GET['subscriber'];
 
-    $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = $the_user_id";
-    $subscriber_query = mysqli_query($connection,$query);
+    // $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = $the_user_id";
+    // $subscriber_query = mysqli_query($connection,$query);
+    $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = ?";
+    $stmt_subscriber_query = mysqli_prepare($connection,$query);
+    mysqli_stmt_bind_param($stmt_subscriber_query, "s", $the_user_id);
+    mysqli_stmt_execute($stmt_subscriber_query);
+    mysqli_stmt_close($stmt_subscriber_query);
     header("Location:users.php");
 
 }

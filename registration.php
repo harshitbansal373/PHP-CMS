@@ -2,9 +2,8 @@
 <?php  include "includes/header.php"; ?>
 
 <!-- Navigation -->
-
 <?php  include "includes/navigation.php"; ?>
- 
+
 <?php
 if(isset($_POST['submit'])){
 $username = $_POST['username'];
@@ -32,10 +31,20 @@ $password = $_POST['password'];
         // $salt = $row['randSalt'];
         // $password = crypt($password,$salt);
 
+        // $query = "INSERT INTO users (user_role,username,user_firstname,user_lastname,user_email,user_password) ";
+        // $query .= "VALUES( 'subscriber','{$username}','{$firstname}','{$lastname}','{$email}','{$password}' )";
+        // $register_user_query = mysqli_query($connection,$query);
+        // if(!$register_user_query){
+        //     die("QUERY FAILED" . mysqli_error($connection) . ' ' . mysqli_errno($connection));
+        // }
+
         $query = "INSERT INTO users (user_role,username,user_firstname,user_lastname,user_email,user_password) ";
-        $query .= "VALUES( 'subscriber','{$username}','{$firstname}','{$lastname}','{$email}','{$password}' )";
-        $register_user_query = mysqli_query($connection,$query);
-        if(!$register_user_query){
+        $query .= "VALUES( 'subscriber',?,?,?,?,?)";
+        $stmt = mysqli_prepare($connection,$query);
+        mysqli_stmt_bind_param($stmt,"sssss",$username,$firstname,$lastname,$email,$password);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+        if(!$stmt){
             die("QUERY FAILED" . mysqli_error($connection) . ' ' . mysqli_errno($connection));
         }
 

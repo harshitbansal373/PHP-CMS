@@ -31,11 +31,14 @@ if(isset($_POST['update_user'])){
  
     $query = "UPDATE users SET user_firstname = '{$user_firstname}', user_lastname = '{$user_lastname}', 
     user_role = '{$user_role}', username = '{$username}', user_email = '{$user_email}', 
-    user_password = '{$user_password}' WHERE username = '{$username}' ";
+    user_password = '{$user_password}' WHERE username = ? ";
   
-    $update_user_query = mysqli_query($connection,$query);
+    $stmt_update_user_query = mysqli_prepare($connection,$query);
+    mysqli_stmt_bind_param($stmt_update_user_query, "s", $username);
+    mysqli_stmt_execute($stmt_update_user_query);
+    mysqli_stmt_close($stmt_update_user_query);
 
-    confirm_query($update_user_query);
+    confirm_query($stmt_update_user_query);
 
     header("location:users.php");
 

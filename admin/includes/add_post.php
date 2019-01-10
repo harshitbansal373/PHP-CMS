@@ -17,23 +17,30 @@ if(isset($_POST['create_post'])){
     $location = "../images/$post_image";
     move_uploaded_file($post_temp_image,$location);
 
-    $query = "INSERT INTO posts(post_title,post_category_id,post_author,post_status,post_image,post_tags,
-    post_content,post_date) ";
-    $query .= "VALUES( '{$post_title}','{$post_category_id}','{$post_author}','{$post_status}','{$post_image}','{$post_tags}',
-    '{$post_content}', NOW() )";
+    // $query = "INSERT INTO posts(post_title,post_category_id,post_author,post_status,post_image,post_tags,
+    // post_content,post_date) ";
+    // $query .= "VALUES( '{$post_title}','{$post_category_id}','{$post_author}','{$post_status}','{$post_image}','{$post_tags}',
+    // '{$post_content}', NOW() )";
 
-    $create_post_query = mysqli_query($connection,$query);
+    // $create_post_query = mysqli_query($connection,$query);
 
-    confirm_query($create_post_query);
+    // confirm_query($create_post_query);
+
+    $query = "INSERT INTO posts(post_title,post_category_id,post_author,post_status,post_image,post_tags,post_content,post_date) ";
+    $query .= "VALUES(?,?,?,?,?,?,?, NOW() )";
+
+    $stmt_create_post_query = mysqli_prepare($connection,$query);
+    mysqli_stmt_bind_param($stmt_create_post_query,"sssssss",$post_title,$post_category_id,$post_author,$post_status,$post_image,$post_tags,$post_content);
+    mysqli_stmt_execute($stmt_create_post_query);
+    mysqli_stmt_close($stmt_create_post_query);
+
+    confirm_query($stmt_create_post_query);
 
     header("location:posts.php");
-
 
 }
 
 ?>
-
-
 
 
 <form action="" method="POST" enctype="multipart/form-data">
@@ -76,10 +83,6 @@ if(isset($_POST['create_post'])){
             </select>
         </div>
 
-        <!-- <div class="form-group">
-            <label for="post_status">Post Status</label>
-            <input type="text" class="form-control" name="post_status" >
-        </div> -->
         <div class="form-group">
             <label for="post_image">Post Image</label>
             <input type="file" class="form-control-file" name="post_image">
@@ -91,13 +94,6 @@ if(isset($_POST['create_post'])){
         <div class="form-group">
             <label for="post_content">Post Content</label>
             <textarea class="form-control" id="editor" name="post_content" rows="4"></textarea>
-            <!-- <script>
-            ClassicEditor
-                .create( document.querySelector( '#editor' ) )
-                .catch( error => {
-                    console.error( error );
-                } );
-            </script> -->
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary " name="create_post" value="Publish Post" >

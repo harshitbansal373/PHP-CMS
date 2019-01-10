@@ -59,26 +59,10 @@
 <?php                          
 
 //approve comments
-if(isset($_GET['approve'])){
-    $the_comment_id = $_GET['approve'];
-
-    $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = $the_comment_id";
-    $approve_query = mysqli_query($connection,$query);
-    header("Location:comments.php");
-
-}
-
+Approve_comment();
 
 //unapprove comments
-if(isset($_GET['unapprove'])){
-    $the_comment_id = $_GET['unapprove'];
-
-    $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = $the_comment_id";
-    $unapprove_query = mysqli_query($connection,$query);
-    header("Location:comments.php");
-
-}
-
+Unapprove_comment();
 
 //delete comments
 if(isset($_GET['delete'])){

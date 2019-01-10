@@ -9,7 +9,7 @@ function currentUser(){
 
 function imagePlaceholder($image=''){
     if(!$image){
-        return '544106281_1280x720.jpg';
+        return 'nopost.jpg';
     }
     else{
         return $image;
@@ -68,20 +68,20 @@ function insert_categories(){
         }
         else{
             $query = "INSERT INTO categories(cat_title)";
-            $query .= "VALUE('{$cat_title}')"; 
+            $query .= "VALUE(?)"; 
 
-            $create_category_query = mysqli_query($connection,$query);
+            $stmt_create_category_query = mysqli_prepare($connection,$query);
+            mysqli_stmt_bind_param($stmt_create_category_query,"s",$cat_title);
+            mysqli_stmt_execute($stmt_create_category_query);
+            mysqli_stmt_close($stmt_create_category_query);
 
-            if(!$create_category_query){
+            if(!$stmt_create_category_query){
                 die('QUERY FAILED'. mysql_error($connection));
             }
         }
-
-     }
+    }
 
 }
-
-
 
 function FindAllCAtegories(){
     global $connection;
@@ -101,10 +101,7 @@ function FindAllCAtegories(){
         echo "</tr>";
     }
 
-
 }
-
-
 
 
 function DeleteCategories(){
@@ -120,6 +117,39 @@ function DeleteCategories(){
 
 }
 
+function Approve_comment(){
+    global $connection;
+
+    if(isset($_GET['approve'])){
+        $the_comment_id = $_GET['approve'];
+    
+        // $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = $the_comment_id";
+        // $approve_query = mysqli_query($connection,$query);
+        $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = ?";
+        $stmt_approve_query = mysqli_prepare($connection,$query);
+        mysqli_stmt_bind_param($stmt_approve_query, "s", $the_comment_id);
+        mysqli_stmt_execute($stmt_approve_query);
+        mysqli_stmt_close($stmt_approve_query);
+        header("Location:comments.php");   
+    }
+}
+
+function Unapprove_comment(){
+    global $connection;
+
+    if(isset($_GET['unapprove'])){
+        $the_comment_id = $_GET['unapprove'];
+    
+        // $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = $the_comment_id";
+        // $unapprove_query = mysqli_query($connection,$query);
+        $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = ?";
+        $stmt_unapprove_query = mysqli_prepare($connection,$query);
+        mysqli_stmt_bind_param($stmt_unapprove_query, "s", $the_comment_id);
+        mysqli_stmt_execute($stmt_unapprove_query);
+        mysqli_stmt_close($stmt_unapprove_query);
+        header("Location:comments.php");   
+    }
+}
 
 function redirect($location){
     header("Location:" . $location);

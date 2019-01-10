@@ -22,13 +22,22 @@
         }
            
         $query = "SELECT * FROM posts WHERE post_category_id = {$post_category_id} ";
-        $select_all_posts_query = mysqli_query($connection,$query);
+        $select_all_posts_count_query = mysqli_query($connection,$query);
+        $count = mysqli_num_rows($select_all_posts_count_query);
 
-        if(!$select_all_posts_query){
+
+        if(!$select_all_posts_count_query){
             die("QUERY FAILED" . mysqli_error($connection));
         }
 
-           while($row = mysqli_fetch_assoc($select_all_posts_query)){
+        if($count==0){?>
+          <hr>
+          <img class="img-fluid" src='images/noimage.jpg' alt="img">
+          <hr> 
+       <?php }
+        else{
+
+           while($row = mysqli_fetch_assoc($select_all_posts_count_query)){
               $post_id = $row['post_id'];
               $post_title = $row['post_title'];
               $post_author = $row['post_author'];
@@ -60,7 +69,7 @@
           <hr>        
 
 
-          <?php } ?>
+          <?php } }?>
  
 
         </div>

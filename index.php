@@ -1,10 +1,10 @@
 
 <?php  include "includes/db.php"; ?>
 <?php  include "includes/header.php"; ?>
+<?php  include "admin/functions.php"; ?>
 
-
-    <!-- Navigation -->
-    <?php include "includes/navigation.php"; ?>
+<!-- Navigation -->
+<?php include "includes/navigation.php"; ?>
 
 
 
@@ -68,7 +68,7 @@
           <p> <i class="far fa-clock"></i> <?php echo $post_date; ?></p>
           <hr>
           <a href="post.php?p_id='<?php echo $post_id; ?>'">
-          <img class="img-fluid" src="images/<?php echo $post_image?>" alt="img">
+          <img class="img-fluid" src="images/<?php echo imagePlaceholder($post_image);?>" alt="img">
           </a>
           <hr>  
           <p><?php echo $post_content; ?></p>

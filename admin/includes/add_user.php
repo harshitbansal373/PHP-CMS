@@ -23,34 +23,31 @@ if(isset($_POST['create_user'])){
 
     $user_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
 
-    // $query = "SELECT randSalt FROM users ";
-    // $select_randsalt_query = mysqli_query($connection,$query);
-    // if(!$select_randsalt_query){
-    //     die("QUERY FAILED" . mysqli_error($connection));
-    // }
+    // $query = "INSERT INTO users(user_firstname,user_lastname,user_role,username,user_email,user_password) ";
+    // $query .= "VALUES( '{$user_firstname}','{$user_lastname}','{$user_role}','{$username}','{$user_email}','{$user_password}' )";
 
-    // $row = mysqli_fetch_array($select_randsalt_query);
-    // $salt = $row['randSalt'];
-    // $user_password = crypt($user_password,$salt);
+    // $create_user_query = mysqli_query($connection,$query);
+
+    // confirm_query($create_user_query);
 
     $query = "INSERT INTO users(user_firstname,user_lastname,user_role,username,user_email,user_password) ";
-    $query .= "VALUES( '{$user_firstname}','{$user_lastname}','{$user_role}','{$username}','{$user_email}','{$user_password}' )";
+    $query .= "VALUES(?,?,?,?,?,?)";
 
-    $create_user_query = mysqli_query($connection,$query);
+    $stmt_create_user_query = mysqli_prepare($connection,$query);
+    mysqli_stmt_bind_param($stmt_create_user_query,"ssssss",$user_firstname,$user_lastname,$user_role,$username,$user_email,$user_password);
+    mysqli_stmt_execute($stmt_create_user_query);
+    mysqli_stmt_close($stmt_create_user_query);
 
-    confirm_query($create_user_query);
+    confirm_query($stmt_create_user_query);
 
     header("location:users.php");
-
 
 }
 
 ?>
 
 
-
-
-<form action="" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="firstname">Firstname</label>
             <input type="text" class="form-control" name="firstname" >
