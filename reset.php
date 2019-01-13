@@ -1,9 +1,4 @@
-<?php  include "includes/db.php"; ?>
 <?php  include "includes/header.php"; ?>
-<?php  include "admin/functions.php"; ?>
-
-<!-- Navigation -->
-<?php  include "includes/navigation.php"; ?>
 
 <?php 
 
@@ -20,8 +15,6 @@
         mysqli_stmt_bind_result($stmt,$username,$user_email,$token);
         mysqli_stmt_fetch($stmt);
         mysqli_stmt_close($stmt);
-
-
 
         // if($_GET['token']!==$token || $_GET['email']!==$email){
         //     redirect('index.php');

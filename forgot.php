@@ -1,7 +1,7 @@
-<?php  include "includes/db.php"; ?>
 <?php  include "includes/header.php"; ?>
-<?php  include "admin/functions.php"; ?>
 
+<!-- Navigation -->
+<?php  include "includes/navigation.php"; ?>
 
 <?php
     
@@ -45,17 +45,14 @@
 
 <!-- Page Content -->
 <div class="container">
-
-<section id="login">
-    <div class="container">
+    <section id="login">
         <div class="row justify-content-center align-items-center">
-            <div class="col-sm-4 col-sm-offset-4 border border-dark">
-                <div class="form-wrap">
-                    <div class="text-center">
-
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="form-wrap text-center mt-5 p-4 border border-dark">
+                    
                     <?php if(!isset($emailsent)): ?>
 
-				        <h3><i class="fa fa-lock fa-4x mt-3"></i></h3>
+				        <h3><i class="fa fa-lock fa-4x"></i></h3>
 				        <h2>Forgot Password?</h2>
                         <p>You can reset your password here.</p>
     	                    <form role="form" action="" method="post" id="login-form" autocomplete="off">
@@ -67,27 +64,24 @@
                                         <input type="email" id="email" name="email" placeholder="email address" class="form-control" required>									
 				        		</div>
                                 <div class="form-group">
-                                <input type="submit" name="sendmail" class="btn btn-lg btn-primary btn-block" value="Reset Password">                            
+                                <input type="submit" name="sendmail" class="btn btn-lg btn-secondary" value="Reset Password">                            
                                 </div>
                                 <input type="hidden" class="hide" name="token" id="token" value="">
     	                    </form>
 
                     <?php else: ?>
-
                         <h2>Please check your email</h2>
 
                     <?php endif; ?>
 
-                    </div>
     	        </div>
-		    </div> <!-- /.col-xs-12 -->
+		    </div> <!-- /.col-sm-4 -->
 		</div> <!-- /.row -->
-    </div> <!-- /.container -->
     </section>
 
-    <hr>
+<hr>
 
-    <?php include "includes/footer.php";?>
+<?php include "includes/footer.php";?>
 
 </div> <!-- /.container -->
 

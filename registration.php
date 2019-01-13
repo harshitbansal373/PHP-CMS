@@ -1,4 +1,3 @@
-<?php  include "includes/db.php"; ?>
 <?php  include "includes/header.php"; ?>
 
 <!-- Navigation -->
@@ -20,16 +19,6 @@ $password = $_POST['password'];
         $password = mysqli_real_escape_string($connection,$password);
 
         $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12)); 
-
-        // $query = "SELECT randSalt FROM users ";
-        // $select_randsalt_query = mysqli_query($connection,$query);
-        // if(!$select_randsalt_query){
-        //     die("QUERY FAILED" . mysqli_error($connection));
-        // }
-
-        // $row = mysqli_fetch_array($select_randsalt_query);
-        // $salt = $row['randSalt'];
-        // $password = crypt($password,$salt);
 
         // $query = "INSERT INTO users (user_role,username,user_firstname,user_lastname,user_email,user_password) ";
         // $query .= "VALUES( 'subscriber','{$username}','{$firstname}','{$lastname}','{$email}','{$password}' )";
@@ -62,15 +51,13 @@ $password = $_POST['password'];
 ?>
    
  
-    <!-- Page Content -->
-    <div class="container">
-    
+<!-- Page Content -->
+<div class="container">
     <section id="login">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-sm-5 col-sm-offset-5">
-                    <div class="form-wrap">
-					<h3 class="text-center mt-3 mb-3"><i class="fas fa-portrait fa-3x"></i></h3>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-sm-5 col-sm-offset-5">
+                <div class="form-wrap">
+	    		    <h3 class="text-center mt-3 mb-3"><i class="fas fa-portrait fa-3x"></i></h3>
                         <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
                             <h6><?php echo $message; ?></h6>
                             <div class="form-group">
@@ -85,24 +72,23 @@ $password = $_POST['password'];
                                 <label for="lastname" class="sr-only">Lastname</label>
                                 <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Enter Your Lastname">
                             </div>
-                             <div class="form-group">
+                            <div class="form-group">
                                 <label for="email" class="sr-only">Email</label>
                                 <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
                             </div>
-                             <div class="form-group">
+                            <div class="form-group">
                                 <label for="password" class="sr-only">Password</label>
                                 <input type="password" name="password" id="key" class="form-control" placeholder="Password">
                             </div>
-
-                            <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Register">
+                            <input type="submit" name="submit" id="btn-login" class="btn btn-secondary btn-lg btn-block" value="Register">
                         </form>
-
-                    </div>
-                </div> <!-- /.col-xs-12 -->
-            </div> <!-- /.row -->
-        </div> <!-- /.container -->
+                </div>
+            </div> <!-- /.col-sm-5 -->
+        </div> <!-- /.row -->
     </section>
 
-    <hr>
+<hr>
 
 <?php include "includes/footer.php";?>
+
+</div> <!-- /.container -->
