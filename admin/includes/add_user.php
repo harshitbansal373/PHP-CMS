@@ -46,7 +46,7 @@ if(isset($_POST['create_user'])){
 
 ?>
 
-
+<div class="col-sm-5">
     <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="firstname">Firstname</label>
@@ -87,3 +87,4 @@ if(isset($_POST['create_user'])){
             <input type="submit" class="btn btn-primary " name="create_user" value="Add user" >
         </div>
     </form>
+</div>

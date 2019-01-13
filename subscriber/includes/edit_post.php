@@ -109,8 +109,11 @@ if(isset($_POST['update_post'])){
 
         <div class="form-group">
             <label for="post_image">Post Image</label><br>
-           <?php echo "<img width='100' class='img-fluid' src='../images/$post_image' alt='img'>";  ?> <br>
-           <input type="file" name="post_image">
+            <?php
+                $image = imagePlaceholder($post_image);
+                echo "<img width='100' class='img-fluid' src='../images/$image' alt='img'>";  
+            ?><br><br>
+            <input type="file" name="post_image">
         </div>
         <div class="form-group">
             <label for="post_tags">Post Tags</label>
