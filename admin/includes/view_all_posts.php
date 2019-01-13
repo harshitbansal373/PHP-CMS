@@ -48,7 +48,8 @@
   
   
           echo "<td>$post_status</td>";
-          echo "<td><img width='100' class='img-fluid' src='../images/$post_image' alt='img'></td>";
+          $image = imagePlaceholder($post_image);
+          echo "<td><img width='100' class='img-fluid' src='../images/$image' alt='img'></td>";
           echo "<td>$post_tags</td>";
 
           $query = "SELECT * FROM comments WHERE comment_post_id = {$post_id}";

@@ -99,7 +99,7 @@
         <?php
         
         $query = "SELECT * FROM comments WHERE comment_post_id = {$the_post_id} ";
-        $query .= "AND comment_status = 'approved' ";
+        $query .= "AND comment_status = 'show' ";
         $query .= "ORDER BY comment_id DESC ";
         $select_comments_query = mysqli_query($connection,$query);
 
@@ -112,7 +112,7 @@
         ?>
 
         <!-- Comment -->
-        <div class="media">
+        <div class="media mb-4">
             <a class="pull-left" href="#">
                 <img class="media-object" src="http://placehold.it/64x64" alt="">
             </a>
@@ -123,7 +123,6 @@
                 <?php echo $comment_content; ?>
             </div>
         </div>
-        <br><br>
 
         <?php } ?>
 

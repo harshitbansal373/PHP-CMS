@@ -6,20 +6,18 @@
 <?php
 if(isset($_SESSION['user_role'])) {
   
-  if($_SESSION['user_role'] == 'admin') {
-    header("location: ../admin/index.php");
-  }
-  else if($_SESSION['user_role'] == 'subscriber') {
-    header("location: ../subscriber/index.php");
-  }
-  else{
-    header("Location: ../index.php");
-  }
-  
-
+    if($_SESSION['user_role'] == 'admin') {
+      header("location: ../admin/index.php");
+    }
+    else if($_SESSION['user_role'] == 'subscriber') {
+      header("location: ../subscriber/index.php");
+    }
+    else{
+      header("Location: ../index.php");
+    }
 
 }else{
-  header("Location: ../index.php");
+  header("Location: ../login.php");
 }
 
 ?>
