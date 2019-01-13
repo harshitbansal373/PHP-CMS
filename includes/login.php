@@ -32,7 +32,9 @@ if(password_verify($password,$db_user_password)){
     $_SESSION['user_lastname'] = $db_user_lastname;
     $_SESSION['user_role'] = $db_user_role;
 
-    header("location: ../admin");
+    // header("location: ../admin");
+    header("location: userverify.php");
+
 }
 else{ 
     header("location: ../index.php");

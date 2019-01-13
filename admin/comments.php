@@ -1,4 +1,3 @@
-
 <?php include "includes/header.php" ?>
 
 <!-- Navbar -->
@@ -18,33 +17,80 @@
     </h1>
     <hr>
 
-<?php
+    <table class="table table-hover table-dark table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">AUTHOR</th>
+          <th scope="col">COMMENT</th>
+          <th scope="col">EMAIL</th>
+          <th scope="col">STATUS</th>
+          <th scope="col">In Response To</th>
+          <th scope="col">DATE</th>
+          <th scope="col">SHOW</th>
+          <th scope="col">HIDE</th>
+          <th scope="col">DELETE</th>
+        </tr>
+      </thead>
+      <tbody>
 
-if(isset($_GET['source'])){
-  $source = $_GET['source'];
+      <?php      
+        $query = "SELECT * FROM comments";
+        $select_all_comments_query = mysqli_query($connection,$query);
+        while($row = mysqli_fetch_assoc($select_all_comments_query)){
+           $comment_id = $row['comment_id'];
+           $comment_post_id = $row['comment_post_id'];
+           $comment_author = $row['comment_author'];
+           $comment_content = $row['comment_content'];
+           $comment_email = $row['comment_email'];
+           $comment_status = $row['comment_status'];
+           $comment_date = $row['comment_date'];
 
-}
-else{
-  $source ='';
-}
+          echo "<tr>";
+          echo "<th scope='row'>$comment_id</th>";
+          echo "<td>$comment_author</td>";
+          echo "<td>$comment_content</td>";
+          echo "<td>$comment_email</td>";
+          echo "<td>$comment_status</td>";
 
-  switch($source){
-    case 'add_post';
-    include "includes/add_post.php" ;    
-    break;
+          $query = "SELECT * FROM posts WHERE post_id = $comment_post_id ";
+          $select_post_id_query = mysqli_query($connection,$query);
+          while($row = mysqli_fetch_assoc($select_post_id_query)){
+              $post_id = $row['post_id'];
+              $post_title = $row['post_title'];
+              echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a></td>";
 
-    case 'edit_post';
-    include "includes/edit_post.php" ; 
-    break;
+          }
 
-    default:
-    include "includes/view_all_comments.php" ;
-    break;
-  }
+          echo "<td>$comment_date</td>";
+          echo "<td><a href='comments.php?show=$comment_id'>Show</td>";
+          echo "<td><a href='comments.php?hide=$comment_id'>Hide</td>";
+          echo "<td><a href='comments.php?delete=$comment_id'>Delete</td>";
+          echo "</tr>";
+        }
+      ?>
+
+      </tbody>
+    </table>
 
 
+    <?php                          
 
-?>
+    //show comments
+    Show_comment();
+
+    //hide comments
+    Hide_comment();
+
+    //delete comments
+    if(isset($_GET['delete'])){
+      $the_comment_id = mysqli_real_escape_string($connection, $_GET['delete']) ;
+      $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
+      $delete_query = mysqli_query($connection,$query);
+      header("Location:comments.php");
+    }
+    ?>
+
 
   </div>
   <!-- /.container-fluid -->

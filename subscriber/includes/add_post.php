@@ -37,6 +37,28 @@ if(isset($_POST['create_post'])){
 
     confirm_query($stmt_create_post_query);
 
+    $query = "SELECT * FROM categories WHERE cat_id = $post_category_id";
+    $select_cat_user = mysqli_query($connection,$query);
+    while($row = mysqli_fetch_assoc($select_cat_user)){
+        $the_cat_user= $row['cat_user'];
+    }
+
+    $query = "SELECT * FROM categories WHERE cat_user LIKE '%$post_user%,' AND cat_id = {$post_category_id}";
+    $search_query = mysqli_query($connection,$query);
+    confirm_query($search_query);
+
+    $count = mysqli_num_rows($search_query);
+
+    if(empty($count)){
+        $append_data = $the_cat_user . $post_user .',';
+    }else{
+        $append_data = $the_cat_user;
+    }
+
+    $query = "UPDATE categories SET cat_user = '{$append_data}'  WHERE cat_id = {$post_category_id}";
+    $update_cat_user_query = mysqli_query($connection, $query);
+    confirm_query($update_cat_user_query);
+
     header("location:posts.php");
 
 }

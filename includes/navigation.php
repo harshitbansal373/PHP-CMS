@@ -23,7 +23,7 @@
                 </a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="admin">Admin
+                <a class="nav-link" href="includes/userverify.php">dashboard
                 </a>
               </li>
               <li class="nav-item ">

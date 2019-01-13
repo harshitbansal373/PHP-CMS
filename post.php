@@ -76,7 +76,7 @@
                         $query = "INSERT INTO comments(comment_post_id,comment_author,comment_email,
                         comment_content,comment_status,comment_date) ";
                         $query .= "VALUES ( $the_post_id,'{$comment_author}','{$comment_email}',
-                        '{$comment_content}','unapproved', NOW() )";
+                        '{$comment_content}','show', NOW() )";
                         
                         $create_comment_query = mysqli_query($connection,$query);
                         

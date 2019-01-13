@@ -73,21 +73,22 @@ function insert_categories(){
 
     if(isset($_POST['submit'])){
         $cat_title = $_POST['cat_title'];
+        $cat_creator = $_SESSION['username'];
 
         if($cat_title =="" || empty($cat_title))  {
-            echo "<p class='lead'>*This field should not be empty</p>";
+            echo "<p class='lead text-danger'>*This field should not be empty</p>";
         }
-
+        
         else if($cat_title == $the_cat_title) {
             echo "<p class='lead text-danger'>*This category is taken</p>";
         }
 
         else{
-            $query = "INSERT INTO categories(cat_title)";
-            $query .= "VALUE(?)"; 
+            $query = "INSERT INTO categories(cat_title,cat_creator)";
+            $query .= "VALUE(?,?)"; 
 
             $stmt_create_category_query = mysqli_prepare($connection,$query);
-            mysqli_stmt_bind_param($stmt_create_category_query,"s",$cat_title);
+            mysqli_stmt_bind_param($stmt_create_category_query,"ss",$cat_title,$cat_creator);
             mysqli_stmt_execute($stmt_create_category_query);
             mysqli_stmt_close($stmt_create_category_query);
 
@@ -99,10 +100,11 @@ function insert_categories(){
 
 }
 
-function FindAllCAtegories(){
+function viewOwnCategory(){
     global $connection;
-
-    $query = "SELECT * FROM categories";
+    
+    $the_cat_creator = $_SESSION['username'];
+    $query = "SELECT * FROM categories WHERE cat_creator = '{$the_cat_creator}' ";
     $select_all_categories = mysqli_query($connection,$query);
 
     while($row = mysqli_fetch_assoc($select_all_categories)){

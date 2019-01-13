@@ -1,4 +1,3 @@
-
 <?php include "includes/header.php" ?>
 
 <!-- Navbar -->
@@ -18,27 +17,25 @@
     </h1>
     <hr>
 
+    <table class="table table-hover table-dark table-bordered">
+        <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">AUTHOR</th>
+              <th scope="col">COMMENT</th>
+              <th scope="col">EMAIL</th>
+              <th scope="col">STATUS</th>
+              <th scope="col">In Response To</th>
+              <th scope="col">DATE</th>
+              <th scope="col">SHOW</th>
+              <th scope="col">HIDE</th>
+              <th scope="col">DELETE</th>
+            </tr>
+        </thead>
+        <tbody>
 
-<table class="table table-hover table-dark table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Author</th>
-      <th scope="col">Comment</th>
-      <th scope="col">Email</th>
-      <th scope="col">Status</th>
-      <th scope="col">In Response To</th>
-      <th scope="col">Date</th>
-      <th scope="col">Approve</th>
-      <th scope="col">Unapprove</th>
-      <th scope="col">Delete</th>
-    </tr>
-</thead>
-<tbody>
-
-    <?php 
-        
-        $query = "SELECT * FROM comments WHERE comment_post_id =" . mysqli_real_escape_string($connection, $_GET['id']). " ";
+        <?php
+        $query = "SELECT * FROM comments WHERE comment_post_id =" .$_GET['id']. " ";
         $select_all_comments_query = mysqli_query($connection,$query);
         while($row = mysqli_fetch_assoc($select_all_comments_query)){
            $comment_id = $row['comment_id'];
@@ -66,35 +63,33 @@
           }
 
           echo "<td>$comment_date</td>";
-          echo "<td><a href='comments.php?approve=$comment_id'>Approve</td>";
-          echo "<td><a href='comments.php?unapprove=$comment_id'>Unapprove</td>";
+          echo "<td><a href='comments.php?show=$comment_id'>Show</td>";
+          echo "<td><a href='comments.php?hide=$comment_id'>Hide</td>";
           echo "<td><a href='post_comment.php?delete=$comment_id&id=". $_GET['id'] ."'>Delete</td>";
           echo "</tr>";
         }
-    ?>
+        ?>
 
-</tbody>
+        </tbody>
     </table>
 
 
-<?php                          
-
-//approve comments
-Approve_comment();
-
-//unapprove comments
-Unapprove_comment();
-
-//delete comments
-if(isset($_GET['delete'])){
-    $the_comment_id = $_GET['delete'];
-
-    $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
-    $delete_query = mysqli_query($connection,$query);
-    header("Location:post_comment.php?id=". $_GET['id'] ."");
-
-}
-?>
+    <?php                          
+    
+    //show comments
+    Show_comment();
+        
+    //hide comments
+    Hide_comment();
+        
+    //delete comments
+    if(isset($_GET['delete'])){
+        $the_comment_id = $_GET['delete'];
+        $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
+        $delete_query = mysqli_query($connection,$query);
+        header("Location:post_comment.php?id=". $_GET['id'] ."");
+    }
+    ?>
 
 
   </div>
