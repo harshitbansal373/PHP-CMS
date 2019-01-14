@@ -1,4 +1,3 @@
-
 <?php include "includes/header.php" ?>
 
 <!-- Navbar -->
@@ -13,9 +12,7 @@
 
   <div class="container-fluid">
     <!-- Page Content -->
-    <h1>Welcome To Admin 
-     <small>Author</small>
-    </h1>
+    <h2>Manage Categories</h2>
     <hr>
 
     <diV class="row" style="background-color:#181e22; color:white;" >
@@ -25,11 +22,11 @@
 
             <form action="" method="POST" class="mt-4">
                 <div class="form-group">
-                    <label for="cat_title">Create Your Own Category</label>
+                    <label for="heading">Create Your Own Category</label>
                     <input type="text" class="form-control" name="cat_title" >
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary " name="submit" value="add category" >
+                    <input type="submit" class="btn btn-secondary " name="submit" value="CREATE" >
                 </div>
             </form>
 
@@ -50,9 +47,9 @@
               <thead>
                 <tr>
                   <th scope="col" >ID</th>
-                  <th scope="col" >Category Title</th>
-                  <th scope="col" >Delete</th>
-                  <th scope="col" >Edit</th>
+                  <th scope="col" >CATEGORY TITLE</th>
+                  <th scope="col" >DELETE</th>
+                  <th scope="col" >EDIT</th>
                 </tr>
               </thead>
               <tbody>
@@ -70,9 +67,9 @@
             <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Category</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">No.Of Post</th>
+                  <th scope="col">CATEGORY</th>
+                  <th scope="col">STATUS</th>
+                  <th scope="col">No.OF POST</th>
                 </tr>
             </thead>
             <tbody>

@@ -1,3 +1,6 @@
+<h2>Edit Post</h2>
+<hr>
+
 <?php
 if(isset($_GET['p_id'])){
     $the_post_id = $_GET['p_id'];
@@ -6,7 +9,6 @@ $query = "SELECT * FROM posts WHERE post_id = {$the_post_id}";
     $select_posts_by_id = mysqli_query($connection,$query);
     while($row = mysqli_fetch_assoc($select_posts_by_id)){
        $post_id = $row['post_id'];
-       $post_author = $row['post_author'];
        $post_title = $row['post_title'];
        $post_category_id = $row['post_category_id'];
        $post_status = $row['post_status'];
@@ -20,7 +22,6 @@ $query = "SELECT * FROM posts WHERE post_id = {$the_post_id}";
 if(isset($_POST['update_post'])){
     $post_title = $_POST['post_title'];
     $post_category_id = $_POST['post_category_id'];
-    $post_author = $_POST['post_author'];
     $post_status = $_POST['post_status'];
 
     $post_image = $_FILES['post_image']['name'];
@@ -43,8 +44,8 @@ if(isset($_POST['update_post'])){
     }
 
     $query = "UPDATE posts SET post_title = '{$post_title}', post_category_id = '{$post_category_id}', 
-    post_author = '{$post_author}', post_status = '{$post_status}', post_image = '{$post_image}', 
-    post_tags = '{$post_tags}', post_content = '{$post_content}', post_date = NOW() WHERE post_id = ?";
+            post_status = '{$post_status}', post_image = '{$post_image}', post_tags = '{$post_tags}', 
+            post_content = '{$post_content}', post_date = NOW() WHERE post_id = ?";
 
     $stmt_update_post = mysqli_prepare($connection,$query);
     mysqli_stmt_bind_param($stmt_update_post, "s", $the_post_id);
@@ -88,12 +89,7 @@ if(isset($_POST['update_post'])){
         </div>
 
         <div class="form-group">
-            <label for="post_author">Post Author</label>
-            <input type="text" class="form-control" value="<?php echo $post_author; ?>" name="post_author" >
-        </div>
-
-        <div class="form-group">
-            <label for="post_status">Post Status</label>
+            <label for="post_status">Post Status</label><br>
             <select name="post_status" id="">
                 <option value="<?php echo $post_status; ?>"><?php echo $post_status; ?></option>
                 <?php
@@ -124,6 +120,6 @@ if(isset($_POST['update_post'])){
             <textarea class="form-control" id="" name="post_content" rows="4"><?php echo $post_content; ?>   </textarea>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary " name="update_post" value="Update Post" >
+            <input type="submit" class="btn btn-secondary " name="update_post" value="Update Post" >
         </div>
     </form>

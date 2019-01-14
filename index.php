@@ -32,26 +32,30 @@
         $query = "SELECT * FROM posts LIMIT $page_1 ,$per_page";
         $select_all_posts_query = mysqli_query($connection,$query);
         while($row = mysqli_fetch_assoc($select_all_posts_query)){
-          $post_id = $row['post_id'];
+            $post_id = $row['post_id'];
             $post_title = $row['post_title'];
-            $post_author = $row['post_author'];
             $post_user = $row['post_user'];
             $post_date = $row['post_date'];
             $post_image = $row['post_image'];
             $post_content = $row['post_content'];
       ?>
 
-
-        <h1 class="page-header">Page Heading
-          <small>Secondary Text</small>
-        </h1>
                   
         <!--first Blog Post -->
         <h2> 
           <a href="post.php?p_id='<?php echo $post_id; ?>'"><?php echo $post_title; ?></a>
         </h2>
         <p class="lead">
-            by <a href="post.php?p_id='<?php echo $post_id; ?>'"><?php echo $post_author; ?></a>
+            <?php
+            $query = "SELECT * FROM users WHERE username = '$post_user' ";
+            $select_user_query = mysqli_query($connection,$query);
+            while($row = mysqli_fetch_assoc($select_user_query)){
+              $user_firstname = $row['user_firstname'];
+              $user_lastname = $row['user_lastname'];
+            }
+            $name = $user_firstname.' '.$user_lastname;
+            ?>
+            by <a href="post.php?p_id='<?php echo $post_id; ?>'"><?php echo $name; ?></a>
         </p>
         <p> <i class="far fa-clock"></i> <?php echo $post_date; ?></p>
         <hr>

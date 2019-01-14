@@ -12,16 +12,15 @@
 
   <div class="container-fluid">
     <!-- Page Content -->
-    <h1>Welcome To Admin 
-     <small>Author</small>
-    </h1>
-    <hr>
+    <h2>COMMENTS</h2>
+    <hr><br>
+    <h6>You can manage commnets that will appear on your Post.</h6>
 
     <table class="table table-hover table-dark table-bordered">
       <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">AUTHOR</th>
+          <th scope="col">NAME</th>
           <th scope="col">COMMENT</th>
           <th scope="col">EMAIL</th>
           <th scope="col">STATUS</th>

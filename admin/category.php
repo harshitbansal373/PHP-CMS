@@ -1,4 +1,3 @@
-
 <?php include "includes/header.php" ?>
 
 <!-- Navbar -->
@@ -11,64 +10,51 @@
 
 <div id="content-wrapper">
 
-  <div class="container-fluid">
-    <!-- Page Content -->
-    <h1>Welcome To Admin 
-     <small>Author</small>
-    </h1>
-    <hr>
+    <div class="container-fluid">
+        <!-- Page Content -->
+        <h2>Manage Categories</h2>
+        <hr>
 
-    <diV class="row" style="background-color:#181e22; color:white;" >
-    <div class="col-sm-6">
+        <diV class="row" style="background-color:#181e22; color:white;" >
+            <div class="col-sm-3">
+                <?php  insert_categories(); ?>                 <!-- insertion of categories -->
+                <form action="" method="POST" class="mt-4">
+                    <div class="form-group">
+                        <label for="heading">Create Category</label>
+                        <input type="text" class="form-control" name="cat_title" >
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-secondary " name="submit" value="CREATE" >
+                    </div>
+                </form>
 
-    <?php  insert_categories(); ?>                 <!-- insertion of categories -->
-<br>
-    <form action="" method="POST">
-        <div class="form-group">
-            <label for="cat_title">Add Category</label>
-            <input type="text" class="form-control" name="cat_title" >
+
+                <?php                           //Edit categories
+                if(isset($_GET['edit'])){
+                    $cat_id = $_GET['edit'];
+                    include "includes/update_category.php";
+                }
+                ?>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary " name="submit" value="add category" >
+
+        <diV class="row" style="background-color:#181e22; color:white;" >
+            <table class="table table-bordered table-hover table-dark">
+            <p class='ml-5 mt-4'>#Information About Categories</p>
+                <thead>
+                    <tr>
+                      <th scope="col" >ID</th>
+                      <th scope="col" >CATERORY</th>
+                      <th scope="col" >DELETE</th>
+                      <th scope="col" >EDIT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php FindAllCAtegories(); ?>               <!-- find all categories -->     
+                    <?php DeleteCategories(); ?>                <!--delete category -->
+                </tbody>
+            </table>
         </div>
-    </form>
-
-
-
-<hr>
-
-<?php                           //Edit categories
-if(isset($_GET['edit'])){
-    $cat_id = $_GET['edit'];
-    include "includes/update_category.php";
-}
-?>
-
-
-    </div>
-    
-
-    <div class="col-sm-6 text-center">
-<br>
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <th scope="col" >ID</th>
-          <th scope="col" >Category Title</th>
-          <th scope="col" >Delete</th>
-          <th scope="col" >Edit</th>
-        </tr>
-      </thead>
-      <tbody>
-
-    <?php FindAllCAtegories(); ?>               <!-- find all categories -->     
-    
-    <?php DeleteCategories(); ?>                <!--delete category -->
-
-      </tbody>
-    </table>
-    </div>
-    </div>
 
 
   </div>

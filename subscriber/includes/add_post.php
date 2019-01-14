@@ -1,9 +1,10 @@
+<h2>Create New Post</h2>
+<hr>
 
 <?php
 if(isset($_POST['create_post'])){
     $post_title = escape($_POST['post_title']);
     $post_category_id = escape($_POST['post_category_id']);
-    $post_author = escape($_POST['post_author']);
     $post_status = escape($_POST['post_status']);
     $post_user = escape($_SESSION['username']);
 
@@ -27,11 +28,11 @@ if(isset($_POST['create_post'])){
 
     // confirm_query($create_post_query);
 
-    $query = "INSERT INTO posts(post_title,post_category_id,post_author,post_status,post_user,post_image,post_tags,post_content,post_date) ";
-    $query .= "VALUES(?,?,?,?,?,?,?,?, NOW() )";
+    $query = "INSERT INTO posts(post_title,post_category_id,post_status,post_user,post_image,post_tags,post_content,post_date) ";
+    $query .= "VALUES(?,?,?,?,?,?,?, NOW() )";
 
     $stmt_create_post_query = mysqli_prepare($connection,$query);
-    mysqli_stmt_bind_param($stmt_create_post_query,"ssssssss",$post_title,$post_category_id,$post_author,$post_status,$post_user,$post_image,$post_tags,$post_content);
+    mysqli_stmt_bind_param($stmt_create_post_query,"sssssss",$post_title,$post_category_id,$post_status,$post_user,$post_image,$post_tags,$post_content);
     mysqli_stmt_execute($stmt_create_post_query);
     mysqli_stmt_close($stmt_create_post_query);
 
@@ -94,12 +95,7 @@ if(isset($_POST['create_post'])){
         </div>
 
         <div class="form-group">
-            <label for="post_author">Post Author</label>
-            <input type="text" class="form-control" name="post_author" >
-        </div>
-
-        <div class="form-group">
-            <label for="post_status">Post Status</label>
+            <label for="post_status">Post Status</label><br>
             <select name="post_status" id="">
                 <option value="draft">draft</option>
                 <option value="published">published</option>
@@ -119,6 +115,6 @@ if(isset($_POST['create_post'])){
             <textarea class="form-control" id="editor" name="post_content" rows="4"></textarea>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary " name="create_post" value="Publish Post" >
+            <input type="submit" class="btn btn-secondary " name="create_post" value="Publish Post" >
         </div>
     </form>

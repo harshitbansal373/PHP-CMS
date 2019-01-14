@@ -1,22 +1,24 @@
+<h2>USERS</h2>
+<h6>List Of All Users</h6>
+<hr>
+
 <table class="table table-hover table-dark table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Username</th>
-      <th scope="col">firstname</th>
-      <th scope="col">Lastname</th>
-      <th scope="col">Email</th>
-      <th scope="col">Role</th>
-      <th scope="col">Change to Admin</th>
-      <th scope="col">Change to Subscriber</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-</thead>
-<tbody>
+    <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Username</th>
+          <th scope="col">firstname</th>
+          <th scope="col">Lastname</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
+          <th scope="col">Change to Admin</th>
+          <th scope="col">Change to Subscriber</th>
+          <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
 
     <?php 
-        
         $query = "SELECT * FROM users";
         $select_all_users_query = mysqli_query($connection,$query);
         while($row = mysqli_fetch_assoc($select_all_users_query)){
@@ -37,14 +39,13 @@
           echo "<td>$user_role</td>";
           echo "<td><a href='users.php?admin=$user_id'>Admin</td>";
           echo "<td><a href='users.php?subscriber=$user_id'>Subscriber</td>";
-          echo "<td><a href='users.php?source=edit_user&u_id=$user_id'>Edit</td>";
           echo "<td><a href='users.php?delete=$user_id'>Delete</td>";
           echo "</tr>";
         }
     ?>
 
-</tbody>
-    </table>
+    </tbody>
+</table>
 
 
 <?php                          

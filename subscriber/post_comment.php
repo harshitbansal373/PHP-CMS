@@ -12,18 +12,15 @@
 
   <div class="container-fluid">
     <!-- Page Content -->
-    <h1>Welcome To Admin 
-     <small>Author</small>
-    </h1>
-    <hr>
+    <h2>COMMENTS</h2>
+    <hr><br>
+    <h6>You can manage commnets that will appear on your Post.</h6>
 
     <table class="table table-hover table-dark table-bordered">
         <thead>
             <tr>
               <th scope="col">ID</th>
-              <th scope="col">Author</th>
               <th scope="col">COMMENT</th>
-              <th scope="col">EMAIL</th>
               <th scope="col">STATUS</th>
               <th scope="col">In Response To</th>
               <th scope="col">DATE</th>
@@ -40,17 +37,13 @@
             while($row = mysqli_fetch_assoc($select_all_comments_query)){
                $comment_id = $row['comment_id'];
                $comment_post_id = $row['comment_post_id'];
-               $comment_author = $row['comment_author'];
                $comment_content = $row['comment_content'];
-               $comment_email = $row['comment_email'];
                $comment_status = $row['comment_status'];
                $comment_date = $row['comment_date'];
 
               echo "<tr>";
               echo "<th scope='row'>$comment_id</th>";
-              echo "<td>$comment_author</td>";
               echo "<td>$comment_content</td>";
-              echo "<td>$comment_email</td>";
               echo "<td>$comment_status</td>";
 
               $query = "SELECT * FROM posts WHERE post_id = $comment_post_id ";

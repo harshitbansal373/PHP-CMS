@@ -13,11 +13,6 @@
 
   <div class="container-fluid">
     <!-- Page Content -->
-    <h1>Welcome To Admin 
-     <small>Author</small>
-    </h1>
-    <hr>
-
     <?php
 
     if(isset($_GET['source'])){

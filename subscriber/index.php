@@ -11,22 +11,8 @@
   <div id="content-wrapper">
     <div class="container-fluid">
       <!-- Page Content -->
-      <div class="text-center">
-        <h1>YOUR WELCOME</h1>
-        <?php
-        $query = "SELECT * FROM users WHERE username = '{$_SESSION['username']}' ";
-        $user_info_query = mysqli_query($connection,$query);
-        while($row = mysqli_fetch_assoc($user_info_query)){
-          $user_firstname = $row['user_firstname'];
-          $user_lastname = $row['user_lastname'];
-        }
-        $name = $user_firstname.' '.$user_lastname;
-        echo "<h1><small>$name</small></h1>";
-        ?>
-      </div>
+      <h2>Dashboard</h2>
       <hr>
-      <p>This is a great starting point for new custom pages.</p>
-
 
       <!-- /.row -->
       <div class="row">
@@ -132,7 +118,7 @@
               chart.draw(data, google.charts.Bar.convertOptions(options));
             }
           </script>
-          <div class="ml-4 mt-5" id="columnchart_material" style="width: 1200px; height: 350px;"></div>
+          <div class="ml-5 mt-5" id="columnchart_material" style="width: 1200px; height: 350px;"></div>
           
         </div>
 

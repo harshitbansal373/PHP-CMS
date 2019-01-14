@@ -1,3 +1,5 @@
+<h2>REGISTER A NEW USER</h2>
+<hr>
 
 <?php
 if(isset($_POST['create_user'])){

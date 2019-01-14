@@ -1,4 +1,3 @@
-
 <?php include "includes/header.php" ?>
 
 <?php
@@ -52,39 +51,38 @@ if(isset($_POST['update_user'])){
 
   <div class="container-fluid">
     <!-- Page Content -->
-    <h1>Welcome To Admin 
-     <small>Author</small>
-    </h1>
+    <h2>Edit Your Personal Details</h2>
     <hr>
 
-    <form action="" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="firstname">Firstname</label>
-            <input type="text" value="<?php echo $user_firstname; ?>" class="form-control" name="firstname" >
-        </div>
-        
-        <div class="form-group">
-            <label for="lastname">Lastname</label>
-            <input type="text" value="<?php echo $user_lastname; ?>" class="form-control" name="lastname" >
-        </div>
-
-        <div class="form-group">
-            <label for="user_email">Email</label>
-            <input type="email" value="<?php echo $user_email; ?>" class="form-control" name="user_email" >
-        </div>
-        <!-- <div class="form-group">
-            <label for="post_image">Post Image</label>
-            <input type="file" class="form-control-file" name="post_image">
-        </div> -->
-        <div class="form-group">
-            <label for="user_password">Password</label>
-            <input type="password" autocomplete="off" class="form-control" name="user_password" >
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary " name="update_user" value="Update Profile" >
-        </div>
-    </form>
-
+    <div class="col-sm-5">
+        <form action="" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="firstname">Firstname</label>
+                <input type="text" value="<?php echo $user_firstname; ?>" class="form-control" name="firstname" >
+            </div>
+            
+            <div class="form-group">
+                <label for="lastname">Lastname</label>
+                <input type="text" value="<?php echo $user_lastname; ?>" class="form-control" name="lastname" >
+            </div>
+    
+            <div class="form-group">
+                <label for="user_email">Email</label>
+                <input type="email" value="<?php echo $user_email; ?>" class="form-control" name="user_email" >
+            </div>
+            <!-- <div class="form-group">
+                <label for="post_image">Post Image</label>
+                <input type="file" class="form-control-file" name="post_image">
+            </div> -->
+            <div class="form-group">
+                <label for="user_password">Password</label>
+                <input type="password" autocomplete="off" class="form-control" name="user_password" >
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary " name="update_user" value="Update Profile" >
+            </div>
+        </form>
+    </div>
 
   </div>
   <!-- /.container-fluid -->
