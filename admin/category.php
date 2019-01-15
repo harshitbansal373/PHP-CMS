@@ -18,6 +18,7 @@
         <diV class="row" style="background-color:#181e22; color:white;" >
             <div class="col-sm-3">
                 <?php  insert_categories(); ?>                 <!-- insertion of categories -->
+                
                 <form action="" method="POST" class="mt-4">
                     <div class="form-group">
                         <label for="heading">Create Category</label>
