@@ -13,8 +13,8 @@
   <div class="container-fluid">
     <!-- Page Content -->
     <h2>COMMENTS</h2>
-    <hr><br>
     <h6>You can manage commnets that will appear on your Post.</h6>
+    <hr><br>
 
     <table class="table table-hover table-dark table-bordered">
       <thead>

@@ -1,4 +1,3 @@
-
 <?php include "includes/header.php" ?>
 
 <?php
@@ -75,11 +74,7 @@ if(isset($_POST['update_user'])){
                 <input type="file" class="form-control-file" name="post_image">
             </div> -->
             <div class="form-group">
-                <label for="user_password">Password</label>
-                <input type="password" autocomplete="off" class="form-control" name="user_password" >
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary " name="update_user" value="Update Profile" >
+                <input type="submit" class="btn btn-secondary " name="update_user" value="UPDATE PROFILE" >
             </div>
         </form>
     </div>

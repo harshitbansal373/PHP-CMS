@@ -27,6 +27,9 @@
 								<input type="password" name="password" id="password" class="form-control" placeholder="Enter Password">
                 	        </div>
                 	        <input type="submit" name="login" id="btn-login" class="btn btn-secondary btn-lg btn-block" value="Login">
+							<div class="form-group">
+      						<a href="forgot.php?forgot=<?php echo uniqid(true); ?>"> Forgot Password?</a>
+      						</div>
                 	    </form>
                 </div>
     	    </div> <!-- /.col-sm-4 -->

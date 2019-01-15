@@ -26,10 +26,11 @@
                 <a class="nav-link" href="includes/userverify.php">dashboard
                 </a>
               </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="login.php">Login
-                </a>
-              </li>
+              <?php
+              if(!isset($_SESSION['user_role'])){
+                echo '<li class="nav-item "><a class="nav-link" href="login.php">Login</a></li>';
+              }
+              ?>
               <li class="nav-item ">
                 <a class="nav-link" href="registration.php">Registration
                 </a>

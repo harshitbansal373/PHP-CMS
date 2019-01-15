@@ -41,7 +41,7 @@
 
 
             }else{
-                echo "different";
+                echo "<h5 class='text-center'>Both Password didn't Match<br>Please enter same Password Password.</h5> ";
             }
         }
     }
@@ -89,7 +89,7 @@
 
     <hr>
 
-    <?php include "includes/footer.php";?>
+<?php include "includes/footer.php";?>
 
 </div> <!-- /.container -->
 

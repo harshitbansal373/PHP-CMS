@@ -42,4 +42,10 @@
             <span>Profile</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="password.php">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Change Password</span>
+          </a>
+        </li>
       </ul>

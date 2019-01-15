@@ -46,12 +46,12 @@ if(isset($_POST['create_post'])){
 
 
 <form action="" method="POST" enctype="multipart/form-data">
-    <div class="form-group">
+    <div class="form-group col-sm-3">
         <label for="post_title">Post title</label>
         <input type="text" class="form-control" name="post_title" >
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-sm">
         <label for="post_category_id">Post Category ID</label><br>
         <select name="post_category_id" id="">   
             <?php   
@@ -70,7 +70,7 @@ if(isset($_POST['create_post'])){
         </select>
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-sm">
         <label for="post_status">Post Status</label><br>
         <select name="post_status" id="">
             <option value="draft">draft</option>
@@ -78,22 +78,22 @@ if(isset($_POST['create_post'])){
         </select>
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-sm">
         <label for="post_image">Post Image</label>
         <input type="file" class="form-control-file" name="post_image">
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-sm-5">
         <label for="post_tags">Post Tags</label>
         <input type="text" class="form-control" name="post_tags" >
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-sm-6">
         <label for="post_content">Post Content</label>
         <textarea class="form-control" id="editor" name="post_content" rows="4"></textarea>
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-sm">
         <input type="submit" class="btn btn-secondary " name="create_post" value="Publish Post" >
     </div>
 </form>
