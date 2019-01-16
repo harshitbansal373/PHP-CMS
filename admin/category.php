@@ -12,7 +12,7 @@
 
     <div class="container-fluid">
         <!-- Page Content -->
-        <h2>Manage Categories</h2>
+        <h2 class="text-center">Manage Categories</h2>
         <hr>
 
         <diV class="row" style="background-color:#181e22; color:white;" >
@@ -40,12 +40,13 @@
         </div>
 
         <diV class="row" style="background-color:#181e22; color:white;" >
-            <table class="table table-bordered table-hover table-dark">
+            <table class="table table-bordered table-hover table-dark text-center">
             <p class='ml-5 mt-4'>#Information About Categories</p>
                 <thead>
                     <tr>
                       <th scope="col" >ID</th>
                       <th scope="col" >CATERORY</th>
+                      <th scope="col" >CREATOR</th>
                       <th scope="col" >DELETE</th>
                       <th scope="col" >EDIT</th>
                     </tr>

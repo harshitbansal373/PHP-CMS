@@ -12,7 +12,7 @@
 
   <div class="container-fluid">
     <!-- Page Content -->
-    <h2>Manage Categories</h2>
+    <h2 class="text-center">Manage Categories</h2>
     <hr>
 
     <diV class="row" style="background-color:#181e22; color:white;" >
@@ -39,30 +39,43 @@
 
 
         </div>
-    
 
-        <div class="col-sm-6 mt-4 ml-auto">
-            <p class='ml-5'>#List of categories created by you</p>
-            <table class="table table-bordered table-hover text-center">
-              <thead>
-                <tr>
-                  <th scope="col" >ID</th>
-                  <th scope="col" >CATEGORY TITLE</th>
-                  <th scope="col" >DELETE</th>
-                  <th scope="col" >EDIT</th>
-                </tr>
-              </thead>
-              <tbody>
+        <?php
+            $the_cat_creator = $_SESSION['username'];
+            $query = "SELECT * FROM categories WHERE cat_creator = '{$the_cat_creator}' ";
+            $select_categories = mysqli_query($connection,$query);
+            $category_own_count = mysqli_num_rows($select_categories);  
 
-            <?php viewOwnCategory(); ?>               <!-- view own categories -->     
+            if($category_own_count>0){
+                $view=true;
+            }
+        ?>
+        <?php if(isset($view)): ?>
 
-            <?php DeleteCategories(); ?>                <!--delete category -->
+            <div class="col-sm-6 mt-4 ml-auto">
+                <p class="ml-5">#List of categories created by you</p>
+                <table class="table table-bordered table-hover text-center">
+                    <thead>
+                        <tr>
+                          <th scope="col" >ID</th>
+                          <th scope="col" >CATEGORY TITLE</th>
+                          <th scope="col" >DELETE</th>
+                          <th scope="col" >EDIT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php viewOwnCategory(); ?>
+                        <?php DeleteCategories(); ?>
+                    </tbody>
+                </table>
+            </div>
 
-              </tbody>
-            </table>
-        </div>
+        <?php endif; ?>
+           
+    </div>
 
-        <table class="table table-hover table-dark table-bordered">
+    <diV class="row" style="background-color:#181e22; color:white;" >
+        <table class="table table-hover table-dark table-bordered text-center">
         <p class='ml-5 mt-4'>#Your whole status about your Post related to Catogories</p>
             <thead>
                 <tr>

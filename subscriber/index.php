@@ -53,10 +53,17 @@
                 </div>
                 <div class="col-sm-9 text-right">
                     <?php
-                      $query = "SELECT * FROM comments";
-                      $select_all_comments = mysqli_query($connection,$query);
-                      $comment_count = mysqli_num_rows($select_all_comments);
-                      echo "<div>{$comment_count}</div>";
+                      $comment_count = 0;
+                      $query = "SELECT * FROM posts WHERE post_user = '{$_SESSION['username']}' ";
+                      $select_user = mysqli_query($connection,$query);
+                      while($row = mysqli_fetch_assoc($select_user)){
+                        $post_id = $row['post_id'];
+                    
+                        $query = "SELECT * FROM comments WHERE comment_post_id = $post_id ";
+                        $select_all_comments = mysqli_query($connection,$query);
+                        $comment_count = $comment_count + mysqli_num_rows($select_all_comments);
+                      }
+                      echo "<div>{$comment_count}</div>";                      
                     ?>
                     <div>Comments</div>
                 </div>
@@ -80,13 +87,22 @@
         $select_all_published_posts = mysqli_query($connection,$query);
         $post_published_count = mysqli_num_rows($select_all_published_posts);
 
+
         $query = "SELECT * FROM posts WHERE post_status = 'draft' AND post_user = '$user' ";
         $select_all_draft_posts = mysqli_query($connection,$query);
         $post_draft_count = mysqli_num_rows($select_all_draft_posts);
 
-        $query = "SELECT * FROM comments WHERE comment_status = 'hide' ";
-        $hide_comments_query = mysqli_query($connection,$query);
-        $hide_comments_count = mysqli_num_rows($hide_comments_query);
+        
+        $hide_comment_count = 0;
+        $query = "SELECT * FROM posts WHERE post_user = '{$_SESSION['username']}' ";
+        $select_user = mysqli_query($connection,$query);
+        while($row = mysqli_fetch_assoc($select_user)){
+          $post_id = $row['post_id'];
+      
+          $query = "SELECT * FROM comments WHERE comment_post_id = $post_id AND comment_status = 'hide' ";
+          $select_all_comments = mysqli_query($connection,$query);
+          $hide_comment_count = $hide_comment_count + mysqli_num_rows($select_all_comments);
+        }
 
         ?>
 
@@ -100,7 +116,7 @@
               
                 <?php
                 $element_text = ['All Posts', 'Active Posts', 'Draft Post', 'Comments', 'hide Comments'];
-                $element_count = [$post_count, $post_published_count, $post_draft_count, $comment_count, $hide_comments_count];
+                $element_count = [$post_count, $post_published_count, $post_draft_count, $comment_count, $hide_comment_count];
                 for($i=0;$i<5;$i++){
                   echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
                 }

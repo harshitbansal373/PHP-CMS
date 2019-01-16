@@ -135,6 +135,38 @@ function DeleteCategories(){
 
 }
 
+function viewPostComments(){
+    global $connection;
+
+    $query = "SELECT * FROM posts WHERE post_user = '{$_SESSION['username']}' ";
+    $select_post_query = mysqli_query($connection,$query);
+    while($row = mysqli_fetch_assoc($select_post_query)){
+        $post_id = $row['post_id'];
+        $post_title = $row['post_title'];
+      
+        $query = "SELECT * FROM comments WHERE comment_post_id = $post_id";
+        $select_all_comments_query = mysqli_query($connection,$query);
+        while($row = mysqli_fetch_assoc($select_all_comments_query)){
+          $comment_id = $row['comment_id'];
+          $comment_post_id = $row['comment_post_id'];
+          $comment_content = $row['comment_content'];
+          $comment_status = $row['comment_status'];
+          $comment_date = $row['comment_date'];
+        
+          echo "<tr>";
+          echo "<th scope='row'>$comment_id</th>";
+          echo "<td>$comment_content</td>";
+          echo "<td>$comment_status</td>";
+          echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a></td>";
+          echo "<td>$comment_date</td>";
+          echo "<td><a href='comments.php?show=$comment_id'>Show</td>";
+          echo "<td><a href='comments.php?hide=$comment_id'>Hide</td>";
+          echo "<td><a href='comments.php?delete=$comment_id'>Delete</td>";
+          echo "</tr>";
+        }  
+    }
+}
+
 function Show_comment(){
     global $connection;
 
