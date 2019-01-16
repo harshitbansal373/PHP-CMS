@@ -143,7 +143,7 @@ function viewPostComments(){
     while($row = mysqli_fetch_assoc($select_post_query)){
         $post_id = $row['post_id'];
         $post_title = $row['post_title'];
-      
+
         $query = "SELECT * FROM comments WHERE comment_post_id = $post_id";
         $select_all_comments_query = mysqli_query($connection,$query);
         while($row = mysqli_fetch_assoc($select_all_comments_query)){

@@ -3,16 +3,6 @@
 <!-- Navbar -->
 <?php include "includes/navigation.php" ?>
 
-<?php
-  $query = "SELECT * FROM comments";
-  $select_all_comments_query = mysqli_query($connection,$query);
-  $select_all_comments_count = mysqli_num_rows($select_all_comments_query);
-
-  if($select_all_comments_count==0){
-    $view = true;
-  }
-?>
-
 <div id="wrapper">
 
 <!-- Sidebar -->
@@ -26,7 +16,17 @@
     <h6>You can manage commnets that will appear on your Post.</h6>
     <hr><br>
 
-    <?php if(isset($view)): ?>
+    <?php
+      $query = "SELECT * FROM comments";
+      $select_all_comments_query = mysqli_query($connection,$query);
+      $select_all_comments_count = mysqli_num_rows($select_all_comments_query);
+
+      if($select_all_comments_count>0){
+        $view = true;
+      }
+    ?>
+
+    <?php if(!isset($view)): ?>
         <h2>No Comments has not been commenced yet</h2>
 
     <?php else: ?>

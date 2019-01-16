@@ -3,22 +3,6 @@
 <!-- Navbar -->
 <?php include "includes/navigation.php" ?>
 
-<?php 
-$query = "SELECT * FROM posts WHERE post_user = '{$_SESSION['username']}' ";
-$select_post_query = mysqli_query($connection,$query);
-while($row = mysqli_fetch_assoc($select_post_query)){
-  $post_id = $row['post_id'];
-
-  $query = "SELECT * FROM comments WHERE comment_post_id = $post_id";
-  $select_all_comments_query = mysqli_query($connection,$query);
-  $select_all_comments_count = mysqli_num_rows($select_all_comments_query);
-
-  if($select_all_comments_count==0){
-    $view = true;
-  }
-}
-?>
-
 <div id="wrapper">
 
 <!-- Sidebar -->
@@ -32,7 +16,23 @@ while($row = mysqli_fetch_assoc($select_post_query)){
     <h6>You can manage commnets that will appear on your Post.</h6>
     <hr><br>
 
-    <?php if(empty($view)): ?>
+    <?php 
+      $query = "SELECT * FROM posts WHERE post_user = '{$_SESSION['username']}' ";
+      $select_post_query = mysqli_query($connection,$query);
+      while($row = mysqli_fetch_assoc($select_post_query)){
+        $post_id = $row['post_id'];
+      
+        $query = "SELECT * FROM comments WHERE comment_post_id = $post_id";
+        $select_all_comments_query = mysqli_query($connection,$query);
+        $select_all_comments_count = mysqli_num_rows($select_all_comments_query);
+      
+        if($select_all_comments_count>0){
+          $view = true;
+        }
+      }
+    ?>
+
+    <?php if(!isset($view)): ?>
         <h2>No Comments has not been commenced yet</h2>
 
     <?php else: ?>
@@ -66,7 +66,7 @@ while($row = mysqli_fetch_assoc($select_post_query)){
 
       //delete comments
       if(isset($_GET['delete'])){
-        $the_comment_id = escape($connection, $_GET['delete']) ;
+        $the_comment_id = $_GET['delete'];
         $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
         $delete_query = mysqli_query($connection,$query);
         header("Location:comments.php");
