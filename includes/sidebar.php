@@ -20,14 +20,14 @@
 
 <div class="card my-4">
 
-<?php if(isset($_SESSION['user_role'])): ?>
+  <?php if(isset($_SESSION['user_role'])): ?>
 
     <h5 class="card-header">Logged in as <?php echo $_SESSION['username']; ?></h5>
     <span class="input-group-btn text-center">
     <a href="includes/logout.php" class="btn btn-primary">Logout</a>
     </span>
 
-<?php else: ?>
+  <?php else: ?>
 
   <h5 class="card-header">Login</h5>
     <form action="includes/login.php" method="POST">
@@ -47,53 +47,53 @@
     </div>
     </form>
 
-<?php endif; ?>
+  <?php endif; ?>
 
 
 </div>
 
 <!-- Categories Widget -->
 <div class="card my-4">
-  <h5 class="card-header">Categories</h5>
+  <h5 class="card-header text-center">Categories</h5>
   <div class="card-body">
-
-    <?php 
-     $query = "SELECT * FROM categories";
-     $select_all_categories_query = mysqli_query($connection,$query);
-    ?> 
-            
-            
+      <?php 
+      $query = "SELECT * FROM categories";
+      $select_all_categories_query = mysqli_query($connection,$query);
+      ?> 
+                  
     <div class="row">
       <div class="col-lg-6">
         <ul class="list-unstyled mb-0">
-        
-        <?php
-        while($row = mysqli_fetch_assoc($select_all_categories_query)){
-         $cat_title = $row['cat_title'];
-         $cat_id = $row['cat_id'];
-         echo "<li class='nav-item'>
-         <a href='categorymenu.php?category=$cat_id'>{$cat_title}</a></li>";
-        }?>
+            <?php
+            while($row = mysqli_fetch_assoc($select_all_categories_query)){
+             $cat_title = $row['cat_title'];
+             $cat_id = $row['cat_id'];
+             echo "<li class='nav-item text-center mb-2'>
+             <a href='categorymenu.php?category=$cat_id'><span class='badge badge-pill badge-primary'><h6>{$cat_title}</h6></span></a></li>";
+            }
+            ?>
+        </ul>
+      </div>
 
-        </ul>
-      </div>
       <div class="col-lg-6">
-        <ul class="list-unstyled mb-0">
+        <ul class="list-unstyled mb-0 text-center">
           <li>
-            <a href="#">JavaScript</a>
+            <a href="#"><span class="badge badge-pill badge-primary mb-2"><h6>JavaScript</h6></span></a>
           </li>
           <li>
-            <a href="#">CSS</a>
+            <a href="#"><span class="badge badge-pill badge-primary mb-2"><h6>CSS</h6></span></a>
           </li>
           <li>
-            <a href="#">PHP</a>
+            <a href="#"><span class="badge badge-pill badge-primary mb-2"><h6>PHP</h6></span></a>
           </li>
           <li>
-            <a href="#">Mysql</a>
+            <a href="#"><span class="badge badge-pill badge-primary mb-2"><h6>SQL</h6></span></a>
           </li>
         </ul>
       </div>
+
     </div>
+    
   </div>
 </div>
 

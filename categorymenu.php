@@ -57,7 +57,9 @@
             </p>
             <p> <i class="far fa-clock"></i> <?php echo $post_date; ?></p>
             <hr>
+            <a href="post.php?p_id='<?php echo $post_id; ?>'">
             <img class="img-fluid" src="images/<?php echo imagePlaceholder($post_image);?>" alt="img">
+            </a>
             <hr>  
             <p><?php echo $post_content; ?></p>
                 <a href="post.php?p_id='<?php echo $post_id; ?>'" class="btn btn-primary">Read More &rarr;</a>
