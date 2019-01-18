@@ -83,8 +83,16 @@
 
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
-    <?Php
-          echo "<li class='page-item'><a class='page-link' href='index.php'>pre</a></li>";    
+    <?php
+      if(isset($_GET['page'])){
+        $pagination = $_GET['page'];
+        
+        if($pagination!=1){
+          $pre = $pagination-1;
+          echo "<li class='page-item'><a class='page-link' href='index.php?page={$pre}'>Previous</a></li>";
+        }
+      }
+
       for($i=1;$i<=$count;$i++){
         if($i == $page){
           echo "<li class='page-item active'><a class='page-link' href='index.php?page={$i}'>{$i}</a></li>";
@@ -92,7 +100,15 @@
           echo "<li class='page-item'><a class='page-link' href='index.php?page={$i}'>{$i}</a></li>";
         }
       }
-          echo "<li class='page-item'><a class='page-link' href='index.php'>next</a></li>";    
+
+      if(isset($_GET['page'])){
+        $pagination = $_GET['page'];
+
+        if($pagination!=$count){
+          $next = $pagination+1;
+          echo "<li class='page-item'><a class='page-link' href='index.php?page={$next}'>Next</a></li>";
+        }
+      }
     ?>
   </ul>
 </nav>
