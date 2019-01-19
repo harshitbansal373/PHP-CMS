@@ -6,7 +6,7 @@
     <table class="table table-hover table-dark table-bordered">
         <thead>
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col">S.No.</th>
               <th scope="col">TITLE</th>
               <th scope="col">CATEGORY</th>
               <th scope="col">STATUS</th>
@@ -19,7 +19,8 @@
         </thead>
         <tbody>
 
-        <?php 
+        <?php
+            $serial=0;
             $query = "SELECT * FROM posts";
             $select_all_posts_query = mysqli_query($connection,$query);
             while($row = mysqli_fetch_assoc($select_all_posts_query)){
@@ -32,7 +33,8 @@
                $post_date = $row['post_date'];
 
               echo "<tr>";
-              echo "<th scope='row'>$post_id</th>";
+              $serial=$serial+1;
+              echo "<th scope='row'>$serial</th>";
               echo "<td>$post_title</td>";
 
               $query = "SELECT * FROM categories WHERE cat_id = {$post_category_id}";

@@ -34,7 +34,7 @@
     <table class="table table-hover table-dark table-bordered">
       <thead>
         <tr>
-          <th scope="col">ID</th>
+          <th scope="col">S.No.</th>
           <th scope="col">NAME</th>
           <th scope="col">COMMENT</th>
           <th scope="col">EMAIL</th>

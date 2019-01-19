@@ -6,7 +6,7 @@
     <table class="table table-hover table-dark table-bordered">
         <thead>
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col">S.No.</th>
               <th scope="col">Username</th>
               <th scope="col">firstname</th>
               <th scope="col">Lastname</th>
@@ -19,7 +19,8 @@
         </thead>
         <tbody>
 
-        <?php 
+        <?php
+            $serial=0;
             $query = "SELECT * FROM users";
             $select_all_users_query = mysqli_query($connection,$query);
             while($row = mysqli_fetch_assoc($select_all_users_query)){
@@ -32,7 +33,8 @@
                $user_role = $row['user_role'];
 
               echo "<tr>";
-              echo "<th scope='row'>$user_id</th>";
+              $serial=$serial+1;
+              echo "<th scope='row'>$serial</th>";
               echo "<td>$username</td>";
               echo "<td>$user_firstname</td>";
               echo "<td>$user_lastname</td>";

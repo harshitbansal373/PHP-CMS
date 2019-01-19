@@ -103,6 +103,7 @@ function insert_categories(){
 function viewOwnCategory(){
     global $connection;
     
+    $serial=0;
     $the_cat_creator = $_SESSION['username'];
     $query = "SELECT * FROM categories WHERE cat_creator = '{$the_cat_creator}' ";
     $select_all_categories = mysqli_query($connection,$query);
@@ -112,7 +113,8 @@ function viewOwnCategory(){
         $cat_title = $row['cat_title'];
 
         echo "<tr>";
-        echo "<td>{$cat_id}</td>";   
+        $serial=$serial+1;
+        echo "<td>{$serial}</td>";   
         echo "<td>{$cat_title}</td>";
         echo "<td><a href='category.php?delete={$cat_id}'>Delete</a></td>";   
         echo "<td><a href='category.php?edit={$cat_id}'>Edit</a></td>";   
@@ -138,6 +140,7 @@ function DeleteCategories(){
 function viewPostComments(){
     global $connection;
 
+    $serial=0;
     $query = "SELECT * FROM posts WHERE post_user = '{$_SESSION['username']}' ";
     $select_post_query = mysqli_query($connection,$query);
     while($row = mysqli_fetch_assoc($select_post_query)){
@@ -148,13 +151,16 @@ function viewPostComments(){
         $select_all_comments_query = mysqli_query($connection,$query);
         while($row = mysqli_fetch_assoc($select_all_comments_query)){
           $comment_id = $row['comment_id'];
+          $comment_author = $row['comment_author'];
           $comment_post_id = $row['comment_post_id'];
           $comment_content = $row['comment_content'];
           $comment_status = $row['comment_status'];
           $comment_date = $row['comment_date'];
         
           echo "<tr>";
-          echo "<th scope='row'>$comment_id</th>";
+          $serial=$serial+1;
+          echo "<th scope='row'>$serial</th>";
+          echo "<td>$comment_author</td>";
           echo "<td>$comment_content</td>";
           echo "<td>$comment_status</td>";
           echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a></td>";

@@ -103,6 +103,7 @@ function insert_categories(){
 function FindAllCAtegories(){
     global $connection;
 
+    $serial=0;
     $query = "SELECT * FROM categories";
     $select_all_categories = mysqli_query($connection,$query);
 
@@ -112,7 +113,8 @@ function FindAllCAtegories(){
         $cat_creator = $row['cat_creator'];
 
         echo "<tr>";
-        echo "<td>{$cat_id}</td>";   
+        $serial=$serial+1;
+        echo "<td>{$serial}</td>";   
         echo "<td>{$cat_title}</td>";
         echo "<td>{$cat_creator}</td>";
         echo "<td><a href='category.php?delete={$cat_id}'>Delete</a></td>";   
@@ -139,6 +141,7 @@ function DeleteCategories(){
 function viewAllComments(){
     global $connection;
 
+    $serial=0;
     $query = "SELECT * FROM comments";
     $select_all_comments_query = mysqli_query($connection,$query);
     while($row = mysqli_fetch_assoc($select_all_comments_query)){
@@ -151,7 +154,8 @@ function viewAllComments(){
        $comment_date = $row['comment_date'];
 
       echo "<tr>";
-      echo "<th scope='row'>$comment_id</th>";
+      $serial=$serial+1;
+      echo "<th scope='row'>$serial</th>";
       echo "<td>$comment_author</td>";
       echo "<td>$comment_content</td>";
       echo "<td>$comment_email</td>";

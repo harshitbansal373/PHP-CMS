@@ -57,7 +57,7 @@
                 <table class="table table-bordered table-hover text-center">
                     <thead>
                         <tr>
-                          <th scope="col" >ID</th>
+                          <th scope="col" >S.No.</th>
                           <th scope="col" >CATEGORY TITLE</th>
                           <th scope="col" >DELETE</th>
                           <th scope="col" >EDIT</th>
@@ -79,15 +79,16 @@
         <p class='ml-5 mt-4'>#Your whole status about your Post related to Catogories</p>
             <thead>
                 <tr>
-                  <th scope="col">ID</th>
+                  <th scope="col">S.No.</th>
                   <th scope="col">CATEGORY</th>
                   <th scope="col">STATUS</th>
-                  <th scope="col">No.OF POST</th>
+                  <th scope="col">No. Of POST</th>
                 </tr>
             </thead>
             <tbody>
 
                 <?php
+                $serial=0;
                 $query = "SELECT * FROM categories";
                 $select_title = mysqli_query($connection,$query);
                 while($row = mysqli_fetch_assoc($select_title)){
@@ -100,7 +101,8 @@
                     $count_cat = mysqli_num_rows($search_query);
 
                         echo "<tr>";
-                        echo "<td>{$cat_id}</td>";   
+                        $serial=$serial+1;
+                        echo "<td>{$serial}</td>";   
                         echo "<td>{$cat_title}</td>";
 
                         if($count_cat==0){
