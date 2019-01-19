@@ -101,6 +101,10 @@
         }
       }
 
+      if(empty($_GET['page'])){
+        echo "<li class='page-item'><a class='page-link' href='index.php?page=2'>Next</a></li>";
+      }
+
       if(isset($_GET['page'])){
         $pagination = $_GET['page'];
 
@@ -109,6 +113,7 @@
           echo "<li class='page-item'><a class='page-link' href='index.php?page={$next}'>Next</a></li>";
         }
       }
+
     ?>
   </ul>
 </nav>
