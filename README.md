@@ -1,7 +1,7 @@
-#Content Management System
+# Content Management System
 This Project is based on content management system build using PHP. This projects includes secured login system or signup system with admin and local user supporter. It also contain dashboard with different analytics which helps to analyse data.
 
-#Installation
+# Installation
 
 1. Install XAMPP or WAMPP.
 
@@ -31,6 +31,6 @@ OR follow gitbash commands
 
 12. admin login details username = harshitbansal and Password=12345.
 
-##If you like my project hit a star button
+## If you like my project hit a star button
 
-[![preview](images/Screenshot from 2019-07-08 16-57-35.png)](https://github.com/harshitbansal373/PHP-CMS/)
+[![preview](https://github.com/harshitbansal373/PHP-CMS/blob/master/images/Screenshot%20from%202019-07-08%2016-57-35.png)](https://github.com/harshitbansal373/PHP-CMS/)
