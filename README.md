@@ -34,5 +34,5 @@ OR follow gitbash commands
 ## If you like my project hit a star button
 
 <div align="center">
-  <img width="50%" src="https://github.com/harshitbansal373/PHP-CMS/blob/master/images/Screenshot%20from%202019-07-08%2016-57-35.png" alt="preview">
+  <img width="70%" src="https://github.com/harshitbansal373/PHP-CMS/blob/master/images/Screenshot%20from%202019-07-08%2016-57-35.png" alt="preview">
 </div>
