@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2019 at 12:27 PM
+-- Generation Time: Jul 08, 2019 at 01:20 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -132,8 +132,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `user_password`, `user_firstname`, `user_lastname`, `user_email`, `user_image`, `user_role`, `randSalt`, `token`) VALUES
-(16, 'harshitbansal', '$2y$12$sBIAqeog9sgvBoWIbfK0KO9K3hK4UwGhWX71XEnRHPZH73/JZgE9W', 'Harshit', 'Bansal', 'harshitbansal373@gmail.com', '', 'admin', '$2y$10$iusesomecrazystrings22', ''),
-(17, 'vijay', '$2y$10$iusesomecrazystrings2uvgnjnDOGIE6JPA9zzq36EdPnYMUav/S', 'vijay', 'malik', 'example@gmail.com', '', 'admin', '$2y$10$iusesomecrazystrings22', '77020c98efbc545715012c76bec5aaec6e8a2cfced12d25f1c2f2626a1ef4af2271b1e458848d80a745e6b578b954cf34427'),
+(17, 'harshitbansal', '$2y$10$iusesomecrazystrings2uvgnjnDOGIE6JPA9zzq36EdPnYMUav/S', 'harshit', 'bansal', 'example@gmail.com', '', 'admin', '$2y$10$iusesomecrazystrings22', '77020c98efbc545715012c76bec5aaec6e8a2cfced12d25f1c2f2626a1ef4af2271b1e458848d80a745e6b578b954cf34427'),
 (20, 'priyanka', '$2y$12$JWAZjgfODGxhEpsJShk4TO5MHGZ/hUnliFfkwPEvsLkfCJOdJ6ugy', 'priyanka', 'sharma', 'example@gmail.com', '', 'subscriber', '$2y$10$iusesomecrazystrings22', '77020c98efbc545715012c76bec5aaec6e8a2cfced12d25f1c2f2626a1ef4af2271b1e458848d80a745e6b578b954cf34427'),
 (22, 'raghuveer', '$2y$12$kTq/GUEkryih.nT9O77KfeyMp9165ZIqlvu1dEOQLKW8RWv0te46W', 'raghuveer', 'singh', 'example123@gmail.com', '', 'subscriber', '$2y$10$iusesomecrazystrings22', '77020c98efbc545715012c76bec5aaec6e8a2cfced12d25f1c2f2626a1ef4af2271b1e458848d80a745e6b578b954cf34427'),
 (26, 'raghuveer23', '$2y$12$23Bqzby0qrz3VfojjbZjT.e4nwL7a68nJk7A4E9bgolDlWmG0lL7m', 'raghuveer', 'sharma', 'example@gmail.com', '', 'subscriber', '$2y$10$iusesomecrazystrings22', '');
@@ -157,7 +156,8 @@ CREATE TABLE `users_online` (
 INSERT INTO `users_online` (`id`, `session`, `time`) VALUES
 (28, 'acqtk6uivrc3mancr6jubo36g8', 1541324861),
 (40, 'ipke8cras4eauiu50upkm1mocd', 1548511410),
-(41, 'l4qj6m6jv3ges0us7cqvrqovhq', 1548401977);
+(41, 'l4qj6m6jv3ges0us7cqvrqovhq', 1548401977),
+(42, 'fd7b414bec20e569f9bd17c4e7ef4c13', 1562584762);
 
 --
 -- Indexes for dumped tables
@@ -225,7 +225,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_online`
 --
 ALTER TABLE `users_online`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
