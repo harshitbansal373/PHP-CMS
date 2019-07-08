@@ -9,9 +9,9 @@ This Project is based on content management system build using PHP. This project
 
 3. Download project from github [PHP-CMS](https://github.com/harshitbansal373/PHP-CMS.git "Content Management System")
 OR follow gitbash commands
-                > go to xampp/htdocs
-                > open git bash
-                > git clone https://github.com/PuneethReddyHC/online-shopping-system-with-advanced-admin-page.git
+                 go to xampp/htdocs
+                 open git bash
+                 git clone https://github.com/PuneethReddyHC/online-shopping-system-with-advanced-admin-page.git
 
 4. open link localhost/phpmyadmin
 
