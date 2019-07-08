@@ -53,49 +53,30 @@
 </div>
 
 <!-- Categories Widget -->
-<div class="card my-4">
+<div class="card my-4 view">
   <h5 class="card-header text-center">Categories</h5>
   <div class="card-body">
-      <?php 
-      $query = "SELECT * FROM categories";
-      $select_all_categories_query = mysqli_query($connection,$query);
-      ?> 
+      <div class="row">
+          <?php 
+          $query = "SELECT * FROM categories";
+          $categories_query = mysqli_query($connection,$query);
+          while($row =  mysqli_fetch_assoc($categories_query)){
+            $cat_title = $row['cat_title'];
+            $cat_id = $row['cat_id'];
+          ?> 
                   
-    <div class="row">
-      <div class="col-lg-6">
-        <ul class="list-unstyled mb-0">
-            <?php
-            while($row = mysqli_fetch_assoc($select_all_categories_query)){
-             $cat_title = $row['cat_title'];
-             $cat_id = $row['cat_id'];
-             echo "<li class='nav-item text-center mb-2'>
-             <a href='categorymenu.php?category=$cat_id'><span class='badge badge-pill badge-primary'><h6>{$cat_title}</h6></span></a></li>";
-            }
-            ?>
-        </ul>
+          <div class="col-4 col-sm-3 col-lg-4">
+              <ul class="list-unstyled mb-0">
+                  <li class='nav-item text-center mb-2'>
+                  <a style="font-family: roboto; color:#2c3e50;" href='categorymenu.php?category=<?php echo $cat_id; ?>'><h6><?php echo '#'.$cat_title; ?></h6></a></li>
+              </ul>
+          </div>
+          <?php } ?>
       </div>
-
-      <div class="col-lg-6">
-        <ul class="list-unstyled mb-0 text-center">
-          <li>
-            <a href="#"><span class="badge badge-pill badge-primary mb-2"><h6>JavaScript</h6></span></a>
-          </li>
-          <li>
-            <a href="#"><span class="badge badge-pill badge-primary mb-2"><h6>CSS</h6></span></a>
-          </li>
-          <li>
-            <a href="#"><span class="badge badge-pill badge-primary mb-2"><h6>PHP</h6></span></a>
-          </li>
-          <li>
-            <a href="#"><span class="badge badge-pill badge-primary mb-2"><h6>SQL</h6></span></a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
     
   </div>
 </div>
+
 
 <!-- Side Widget -->
 <?php include "widget.php"; ?>
